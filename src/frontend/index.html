@@ -11,11 +11,18 @@
 </head>
 
 <body>
+    <div class="header">
+        <img src="logo.png" alt="">
+    </div>
+    <div class="container-text">
+        <h1>IMAGE COMPRESSION<span>.</span></h1>
+        <h2>This website using SVD for image compression.</h2>
+    </div>
     <div class="image-compression">
-        <div class="container">
+        <div class="container-input">
             <div class="wrapper">
                 <div class="image">
-                    <!-- <img src="gambar3.jpg"> -->
+                    <img src="" alt="">
                 </div>
                 <div class="content">
                     <div class="icon">
@@ -23,13 +30,50 @@
                     </div>
                     <div class="text">No file choosen, yet</div>
                 </div>
+                <div id="cancel-btn"><i class="fas fa-times"></i></div>
+                <div class="filename">file name here</div>
             </div>
-            <div class="cancel-btn"><i class="fas fa-times"></i></div>
-            <div class="file-name">file name here</div>
-            <input id="default-btn" type="file">
-            <button id="custome-btn">choose a file</button>
+            <input id="default-btn" type="file" hidden>
+            <button onclick="defaultBtnActivate()" id="custom-btn">choose a file</button>
         </div>
     </div>
+
+
+    <script>
+        const wrapper = document.querySelector(".wrapper");
+        const image = document.querySelector(".image");
+        const fileName = document.querySelector(".filename");
+        const defaultBtn = document.querySelector("#default-btn");
+        const cancelBtn = document.querySelector("#cancel-btn");
+        const customBtn = document.querySelector("#custom-btn");
+        const img = document.querySelector(".image img");
+        let regExp = /[0-9a-zA-Z\^\&\'\@\{\}\[\]\,\$\=\!\-\#\(\)\.\%\+\~\_ ]+$/;
+        function defaultBtnActivate() {
+            defaultBtn.click();
+        }
+        defaultBtn.addEventListener("change", function () {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function () {
+                    const result = reader.result;
+                    img.src = result;
+                    wrapper.classList.add("activate");
+                    image.classList.add("activate");
+                }
+                cancelBtn.addEventListener("click", function () {
+                    img.src = "";
+                    image.classList.remove("activate");
+                    wrapper.classList.remove("activate");
+                });
+                reader.readAsDataURL(file);
+            }
+            if (this.value) {
+                let valueStore = this.value.match(regExp);
+                fileName.textContent = valueStore;
+            }
+        });
+    </script>
 </body>
 
 </html>
