@@ -8,12 +8,7 @@
 .header {
 	display: flex;
 	align-items: center;
-	background: linear-gradient(
-		180deg,
-		rgba(241, 255, 250, 0) 0.82%,
-		#dd727d 0%,
-		#c06c84 100%
-	);
+	background-color: #105652;
 	height: 10vh;
 }
 
@@ -26,10 +21,10 @@
 
 /*//////////// TEXT ///////////////////*/
 .container-text {
-	margin-left: 5vh;
-	margin-top: 50px;
+	padding: 5vh;
+	background-color: #fbf3e4;
 	height: 20vh;
-	color: #c06c84;
+	color: #b91646;
 }
 .container-text h1 {
 	font-size: 50px;
@@ -47,21 +42,35 @@
 
 /*//////////////////////////////IMAGE COMPRESSION //////////////////////////////////*/
 .image-compression {
-	display: grid;
+	display: flex;
 	height: 100%;
-	margin: 5vh;
-	place-items: left;
+	padding: 5vh;
+	/* background-color: red; */
+	background-color: #fbf3e4;
 	text-align: center;
+}
+.container-image {
+	width: 45%;
+	padding-left: 30px;
+	margin-bottom: 100px;
+	/* background-color: red; */
 }
 .container-input {
 	height: 350px;
 	width: 430px;
 }
+
+.imagetime h1 {
+	color: #b91646;
+	display: flex;
+	margin-left: 157px;
+}
+
 .container-input .wrapper {
 	position: relative;
 	height: 300px;
 	width: 100%;
-	border: 2px dashed #f67280;
+	border: 2px dashed #b91646;
 	border-radius: 10px;
 	background: white;
 	display: flex;
@@ -91,12 +100,12 @@
 
 .wrapper .icon {
 	font-size: 100px;
-	color: #f67280;
+	color: #b91646;
 }
 .wrapper .text {
 	font-size: 20px;
 	font-weight: 500;
-	color: #c06c84;
+	color: #b91646;
 }
 
 .wrapper #cancel-btn {
@@ -105,7 +114,7 @@
 	top: 15px;
 	font-size: 20px;
 	cursor: pointer;
-	color: #f67280;
+	color: #b91646;
 	display: none;
 }
 
@@ -125,7 +134,7 @@
 		135deg,
 		rgba(241, 255, 250, 0) 0.82%,
 		#dd727d 0.83%,
-		#c06c84 73.34%
+		#b91646 73.34%
 	);
 	padding: 8px 0;
 	font-size: 18px;
@@ -146,7 +155,7 @@
 		135deg,
 		rgba(241, 255, 250, 0) 0.82%,
 		#f67280 0.83%,
-		#c06c84 73.34%
+		#b91646 73.34%
 	);
 	color: white;
 	padding: 8px 0;

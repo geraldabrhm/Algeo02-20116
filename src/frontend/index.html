@@ -17,27 +17,44 @@
     <div class="container-text">
         <h1>IMAGE COMPRESSION<span>.</span></h1>
         <h2>This website using SVD for image compression.</h2>
+        <h3>image compression rate</h3>
     </div>
     <div class="image-compression">
-        <div class="container-input">
-            <div class="wrapper">
-                <div class="image">
-                    <img src="" alt="">
-                </div>
-                <div class="content">
-                    <div class="icon">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                    </div>
-                    <div class="text">No file choosen, yet</div>
-                </div>
-                <div id="cancel-btn"><i class="fas fa-times"></i></div>
-                <div class="filename">file name here</div>
+        <div class="container-image">
+            <div class="imagetime">
+                <h1>BEFORE</h1>
             </div>
-            <input id="default-btn" type="file" hidden>
-            <button onclick="defaultBtnActivate()" id="custom-btn">choose a file</button>
+            <div class="container-input">
+                <div class="wrapper">
+                    <div class="image">
+                        <img src="" alt="">
+                    </div>
+                    <div class="content">
+                        <div class="icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <div class="text">No file choosen, yet</div>
+                    </div>
+                    <div id="cancel-btn"><i class="fas fa-times"></i></div>
+                    <div class="filename">file name here</div>
+                </div>
+                <input id="default-btn" type="file" hidden>
+                <button onclick="defaultBtnActivate()" id="custom-btn">choose a file</button>
+            </div>
+        </div>
+        <div class="container-image">
+            <div class="imagetime">
+                <h1>AFTER</h1>
+            </div>
+            <div class="container-input">
+                <div class="wrapper">
+                    <div class="image">
+                        <img src="" alt="">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
 
     <script>
         const wrapper = document.querySelector(".wrapper");
