@@ -1,4 +1,4 @@
-from flask import Flask, json, flash, request, jsonify, send_file
+from flask import Flask, json, flash, request, jsonify, send_file, url_for
 from flask.templating import render_template
 import os
 from werkzeug.utils import secure_filename
@@ -12,22 +12,22 @@ defaultImage = os.path.join(app.config['UPLOAD_FOLDER'], 'no_image.jpg')
 before_compressed = defaultImage
 after_compressed = defaultImage
 
-@app.route("/")
-def hello_world():
-    return "<h1>Hello, World!</h1>"
+# @app.route("/")
+# def hello_world():
+#     return "<h1>Hello, World!</h1>"
 
-@app.route('/get', methods = ['GET'])
+@app.route('/', methods = ['GET'])
 def getImage():
     after_compressed = 'messi.jpg'
     return render_template('index.html', before = before_compressed, after = after_compressed)
 
-@app.route('/get_image')
-def get_image():
-    if request.args.get('type') == '1':
-       filename = 'Image\\messi.jpg'
-    else:
-       filename = 'Image\\no_image.jpg'
-    return send_file(filename, mimetype='image/gif')
+# @app.route('/get_image')
+# def get_image():
+#     if request.args.get('type') == '1':
+#        filename = 'Image\\messi.jpg'
+#     else:
+#        filename = 'Image\\no_image.jpg'
+#     return send_file(filename, mimetype='image/gif')
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
