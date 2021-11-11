@@ -17,7 +17,11 @@
     <div class="container-text">
         <h1>IMAGE COMPRESSION<span>.</span></h1>
         <h2>This website using SVD for image compression.</h2>
-        <h3>image compression rate</h3>
+        <div class="input-compression">
+            <h3>image compression rate</h3>
+            <input type="text">
+            <h3>%</h3>
+        </div>
     </div>
     <div class="image-compression">
         <div class="container-image">
@@ -42,6 +46,10 @@
                 <button onclick="defaultBtnActivate()" id="custom-btn">choose a file</button>
             </div>
         </div>
+        <div class="container-button">
+            <button type="submit" id="submit-btn">submit</button>
+
+        </div>
         <div class="container-image">
             <div class="imagetime">
                 <h1>AFTER</h1>
@@ -52,8 +60,18 @@
                         <img src="" alt="">
                     </div>
                 </div>
+                <a href="logo.png" id="download-btn" download hidden></a>
+                <button onclick="downloadBtnActivate()" id="custom-btn">Download</button>
             </div>
         </div>
+    </div>
+    <div class="container-text">
+        <h2>image pixel difference percentage: </h2>
+        <div class="input-compression">
+            <h2>image compression time: </h2>
+            <h2>second</h2>
+        </div>
+
     </div>
 
 
@@ -66,9 +84,13 @@
         const cancelBtn = document.querySelector("#cancel-btn");
         const customBtn = document.querySelector("#custom-btn");
         const img = document.querySelector(".image img");
+        const downloadBtn = document.querySelector("#download-btn");
         let regExp = /[0-9a-zA-Z\^\&\'\@\{\}\[\]\,\$\=\!\-\#\(\)\.\%\+\~\_ ]+$/;
         function defaultBtnActivate() {
             defaultBtn.click();
+        }
+        function downloadBtnActivate() {
+            downloadBtn.click();
         }
         defaultBtn.addEventListener("change", function () {
             const file = this.files[0];
