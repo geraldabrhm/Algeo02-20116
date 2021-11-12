@@ -19,7 +19,10 @@
         <h2>This website using SVD for image compression.</h2>
         <div class="input-compression">
             <h3>image compression rate</h3>
-            <input type="text">
+            <form action="submit">
+                <input type="text">
+                <input id="default-btn" type="file" hidden>
+            </form>
             <h3>%</h3>
         </div>
     </div>
@@ -42,7 +45,6 @@
                     <div id="cancel-btn"><i class="fas fa-times"></i></div>
                     <div class="filename">file name here</div>
                 </div>
-                <input id="default-btn" type="file" hidden>
                 <button onclick="defaultBtnActivate()" id="custom-btn">choose a file</button>
             </div>
         </div>
