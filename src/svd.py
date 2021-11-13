@@ -16,17 +16,17 @@ def simultaneous_power_iteration(A, k):
 
     return np.diag(R), Q
 
-def svd(A):
+def svd(A, k):
     A = A.astype('float64')
     m,n = A.shape
     At = np.transpose(A)
 
     Right = At @ A
     # Mengambil 200 nilai eigen yang paling besar
-    EV, V = simultaneous_power_iteration(Right, 200)
+    EV, V = simultaneous_power_iteration(Right, min(k, 200))
     V = np.pad(V,((0,0),(0,n-V.shape[1])))
     # Membuat matriks Sigma
-    singularValue = np.sqrt(EV)
+    singularValue = np.sqrt(abs(EV))
     Sigma = np.diag(singularValue)
     Sinv = np.linalg.inv(Sigma)
     Sigma = np.pad(Sigma, ((0,n-Sigma.shape[0]),(0,m-Sigma.shape[1])))
@@ -38,8 +38,11 @@ def svd(A):
     return U, Sigma, np.transpose(V)
 
 def process(Mat, k):
-    U,S,Vt = svd(Mat)
-    k *=2
+    U,S,Vt = svd(Mat, k)
+    if (min(Mat.shape) > 200):
+        k *= 2
+    else:
+        k = k*min(Mat.shape)//100
 
     # proses pemotongan matriks 
     U = U[:,:k]
@@ -82,7 +85,15 @@ def compress(filename, persen):
     start = timeit.default_timer()
     pathfile = os.path.join(os.getcwd(), 'static', 'Image', filename)
     img = cv.imread(pathfile,-1)
+    print(("Compressing", filename))
     after = main(img, persen)
+
+    if (min(img.shape[0], img.shape[1]) > 200):
+        persen *= 2
+    else:
+        persen = persen*min(img.shape)//100
+    
+    pixel = pixelDiff(img, persen)
 
     stop = timeit.default_timer()
     total = round(stop - start)
@@ -91,7 +102,9 @@ def compress(filename, persen):
     newFilename = filename.split(".")[0] +'_'+str(persen)+'.'+filename.split(".")[-1]
     newPathfile = os.path.join(os.getcwd(), 'static', 'Image', newFilename)
     cv.imwrite(newPathfile, after)
-    return total,newFilename
+    return total, newFilename, pixel
 
-
-time, compressedFilename = compress('robotPotrait.jpg', 10)
+def pixelDiff(Mat, k):
+    m,n,_ = Mat.shape
+    return ((m*k+k+k*n)*100/(m*n))
+# time, compressedFilename = compress('logo_itb_128.png', 10)

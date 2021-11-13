@@ -20,10 +20,10 @@
         <h2>This website using SVD for image compression.</h2>
         <div class="input-compression">
             <h3>image compression rate</h3>
-            <form action="submit">
-                <input type="text" name="compression-rate">
-                <input id="default-btn" type="file" hidden>
-            </form>
+            <!-- <form action="submit"> -->
+                <!-- <input type="number" name="compression-rate">  Get compression value from here -->
+                <!-- <input id="default-btn" type="file" hidden> -->
+            <!-- </form> -->
             <h3>%</h3>
         </div>
     </div>
@@ -32,48 +32,68 @@
             <div class="imagetime">
                 <h1>BEFORE</h1>
             </div>
-            <div class="container-input">
-                <div class="wrapper">
-                    <div class="image">
-                        <img src="" alt="">
-                    </div>
-                    <div class="content">
-                        <div class="icon">
-                            <i class="fas fa-cloud-upload-alt"></i>
+            <form method="post" action="/" enctype="multipart/form-data">
+                <input type="number" name="compression-rate">
+                <!-- <div class="container-input">
+                    <div class="wrapper">
+                        <div class="image">
+                            <img src="" alt="">
                         </div>
-                        <div class="text">No file choosen, yet</div>
+                        <div class="content">
+                            <div class="icon">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                            <div class="text">No file choosen, yet</div>
+                        </div>
+                        <div id="cancel-btn"><i class="fas fa-times"></i></div>
+                        <div class="filename">file name here</div>
                     </div>
-                    <div id="cancel-btn"><i class="fas fa-times"></i></div>
-                    <div class="filename">file name here</div>
-                </div>
-                <button onclick="defaultBtnActivate()" id="custom-btn">choose a file</button>
-            </div>
+                    <button onclick="defaultBtnActivate()" id="custom-btn">choose a file</button>
+                </div> -->
+                <input type="file" name="file" class="form-control" autocomplete="off" required>
+                <input type="submit" value="Submit" class="btn btn-info">
+            </form>
         </div>
-        <div class="container-button">
-            <button type="submit" id="submit-btn">submit</button>
-
-        </div>
+        <!-- <div class="container-button"> -->
+            <!-- <button type="submit" id="submit-btn">submit</button>  Cara getval -->
+        <!-- </div> -->
         <div class="container-image">
             <div class="imagetime">
                 <h1>AFTER</h1>
             </div>
             <div class="container-input">
+                {% if compressed %}
                 <div class="wrapper">
                     <div class="image">
-                        <img src="" alt="">
+                        <img src="{{ url_for('display_image', filename=compressed) }}" alt=""> 
                     </div>
+                    <a href="{{ url_for('download_file', filename=compressed) }}" id="download-btn">DOWNLOAD HERE</a>
+                    <!-- <button onclick="downloadBtnActivate()" id="custom-btn">Download</button> -->
+                    <!-- <button onclick="{{url_for}}" id="custom-btn">Download</button> -->
                 </div>
-                <a href="logo.png" id="download-btn" download hidden></a>
-                <button onclick="downloadBtnActivate()" id="custom-btn">Download</button>
+                {% endif %}
             </div>
         </div>
     </div>
-    <div class="container-text">
-        <h2>image pixel difference percentage: </h2>
-        <div class="input-compression">
-            <h2>image compression time: </h2>
-            <h2>second</h2>
+    {% if filename %}
+        <div>
+            <img src="{{ url_for('display_image', filename=filename) }}">
         </div>
+    {% endif %}
+    <!-- {% if compressed %}
+        <div>
+            <img src="{{ url_for('display_image', filename=compressed) }}">
+        </div>
+    {% endif %} -->
+    <div class="container-text">
+        {% if pixel %}
+        <h2>image pixel difference percentage: {{pixel}}%</h2>
+        {% endif %}
+        {% if waktu %}
+        <div class="input-compression">
+            <h2>image compression time: {{ waktu }} seconds</h2>
+        </div>
+        {% endif %}
 
     </div>
 
