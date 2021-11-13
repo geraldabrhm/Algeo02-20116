@@ -21,9 +21,15 @@
         <div class="input-compression">
             <h3>image compression rate</h3>
             <!-- <form action="submit"> -->
-                <!-- <input type="number" name="compression-rate">  Get compression value from here -->
-                <!-- <input id="default-btn" type="file" hidden> -->
+            <!-- <input type="number" name="compression-rate">  Get compression value from here -->
+            <!-- <input id="default-btn" type="file" hidden> -->
             <!-- </form> -->
+            <form method="post" action="/" enctype="multipart/form-data">
+                <input type="number" name="compression-rate">
+
+                <input id=default-btn type="file" name="file" class="form-control" autocomplete="off" required hidden>
+                <input id=submit-btn type="submit" value="Submit" class="btn btn-info" hidden>
+            </form>
             <h3>%</h3>
         </div>
     </div>
@@ -32,54 +38,56 @@
             <div class="imagetime">
                 <h1>BEFORE</h1>
             </div>
-            <form method="post" action="/" enctype="multipart/form-data">
-                <input type="number" name="compression-rate">
-                <!-- <div class="container-input">
-                    <div class="wrapper">
-                        <div class="image">
-                            <img src="" alt="">
+            <!-- <form method="post" action="/" enctype="multipart/form-data">
+                <input type="number" name="compression-rate"> -->
+            <div class="container-input">
+                <div class="wrapper">
+                    <div class="image">
+                        <img class="image-before" src="" alt="">
+                        {% if filename %}
+                        <div>
+                            <img src="{{ url_for('display_image', filename=filename) }}">
                         </div>
-                        <div class="content">
-                            <div class="icon">
-                                <i class="fas fa-cloud-upload-alt"></i>
-                            </div>
-                            <div class="text">No file choosen, yet</div>
-                        </div>
-                        <div id="cancel-btn"><i class="fas fa-times"></i></div>
-                        <div class="filename">file name here</div>
+                        {% endif %}
                     </div>
-                    <button onclick="defaultBtnActivate()" id="custom-btn">choose a file</button>
-                </div> -->
-                <input type="file" name="file" class="form-control" autocomplete="off" required>
+                    <div class="content">
+                        <div class="icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <div class="text">No file choosen, yet</div>
+                    </div>
+                    <div id="cancel-btn"><i class="fas fa-times"></i></div>
+                    <div class="filename">file name here</div>
+                </div>
+                <button onclick="defaultBtnActivate()" id="custom-btn">choose a file</button>
+            </div>
+            <!-- <input type="file" name="file" class="form-control" autocomplete="off" required>
                 <input type="submit" value="Submit" class="btn btn-info">
-            </form>
+            </form> -->
         </div>
-        <!-- <div class="container-button"> -->
-            <!-- <button type="submit" id="submit-btn">submit</button>  Cara getval -->
-        <!-- </div> -->
+        <div class="container-button">
+            <button onclick="submitBtnActivate()" id="submit-btn">submit</button>
+        </div>
         <div class="container-image">
+            {% if compressed %}
             <div class="imagetime">
                 <h1>AFTER</h1>
             </div>
             <div class="container-input">
-                {% if compressed %}
                 <div class="wrapper">
                     <div class="image">
-                        <img src="{{ url_for('display_image', filename=compressed) }}" alt=""> 
+                        <img src="{{ url_for('display_image', filename=compressed) }}" alt="">
                     </div>
-                    <a href="{{ url_for('download_file', filename=compressed) }}" id="download-btn">DOWNLOAD HERE</a>
-                    <!-- <button onclick="downloadBtnActivate()" id="custom-btn">Download</button> -->
+                    <a href="{{ url_for('download_file', filename=compressed) }}" id="download-btn">DOWNLOAD
+                        HERE</a>
                     <!-- <button onclick="{{url_for}}" id="custom-btn">Download</button> -->
                 </div>
-                {% endif %}
+                <button onclick="downloadBtnActivate()" id="custom-btn">Download</button>
             </div>
+            {% endif %}
         </div>
     </div>
-    {% if filename %}
-        <div>
-            <img src="{{ url_for('display_image', filename=filename) }}">
-        </div>
-    {% endif %}
+
     <!-- {% if compressed %}
         <div>
             <img src="{{ url_for('display_image', filename=compressed) }}">
@@ -101,10 +109,11 @@
     <!---------------------- SCRIPT  ------------>
     <script>
         const wrapper = document.querySelector(".wrapper");
-        const image = document.querySelector(".image");
+        const image = document.querySelector(".image-before");
         const fileName = document.querySelector(".filename");
         const defaultBtn = document.querySelector("#default-btn");
         const cancelBtn = document.querySelector("#cancel-btn");
+        const submitBtn = document.querySelector("#submit-btn")
         const customBtn = document.querySelector("#custom-btn");
         const img = document.querySelector(".image img");
         const downloadBtn = document.querySelector("#download-btn");
@@ -114,6 +123,9 @@
         }
         function downloadBtnActivate() {
             downloadBtn.click();
+        }
+        function submitBtnActivate() {
+            submitBtn.click();
         }
         defaultBtn.addEventListener("change", function () {
             const file = this.files[0];

@@ -131,13 +131,17 @@
 	position: absolute;
 	/* height: 100%;
 	width: 100%; */
-	display: none;
+	/* display: none; */
 	align-items: center;
 	justify-content: center;
 }
-.image.activate {
-	display: flex;
+
+/* .wrapper .image .image-before {
+	opacity: 0%;
 }
+.image-before.activate {
+	opacity: 100%;
+} */
 .wrapper img {
 	height: 100%;
 	width: 100%;
