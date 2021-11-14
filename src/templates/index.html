@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="{{url_for('static', filename='frontend/style.css')}}">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
-<!-- src="{{url_for('static', filename='Image/no_image.jpg')}} -->
 
 <body>
     <div class="header">
@@ -20,10 +19,6 @@
         <h2>This website using SVD for image compression.</h2>
         <div class="input-compression">
             <h3>image compression rate</h3>
-            <!-- <form action="submit"> -->
-            <!-- <input type="number" name="compression-rate">  Get compression value from here -->
-            <!-- <input id="default-btn" type="file" hidden> -->
-            <!-- </form> -->
             <form method="post" action="/" enctype="multipart/form-data">
                 <input type="number" name="compression-rate" min="1" max="100" required>
                 <input id=default-btn type="file" name="file" class="form-control" autocomplete="off" required hidden>
@@ -37,32 +32,18 @@
             <div class="imagetime">
                 <h1>BEFORE</h1>
             </div>
-            <!-- <form method="post" action="/" enctype="multipart/form-data">
-                <input type="number" name="compression-rate"> -->
             <div class="container-input">
                 <div class="wrapper">
                     <div class="image">
                         {% if filename %}
                         <img class="image-before" src="{{ url_for('display_image', filename=filename) }}" alt="">
-                        <!-- <div>
-                            <img src="{{ url_for('display_image', filename=filename) }}">
-                        </div> -->
                         {% endif %}
                     </div>
-                    <!-- <div class="content">
-                        <div class="icon">
-                            <i class="fas fa-cloud-upload-alt"></i>
-                        </div>
-                        <div class="text">No file choosen, yet</div>
-                    </div> -->
                     <div id="cancel-btn"><i class="fas fa-times"></i></div>
                     <div class="filename">file name here</div>
                 </div>
                 <button onclick="defaultBtnActivate()" id="custom-btn">choose a file</button>
             </div>
-            <!-- <input type="file" name="file" class="form-control" autocomplete="off" required>
-                <input type="submit" value="Submit" class="btn btn-info">
-            </form> -->
         </div>
         <div class="container-button">
             <button onclick="submitBtnActivate()" id="submit-btn">COMPRESS</button>
@@ -79,22 +60,12 @@
                     </div>
                          <a href="{{ url_for('download_file', filename=compressed) }}" id="download-btn">DOWNLOAD
                         HERE</a> 
-                    <!-- <button onclick="{{url_for}}" id="custom-btn">Download</button> -->
                 </div>
                 <button onclick="downloadBtnActivate()" id="custom-btn">Download</button>
             </div>
-            <!-- <form method="get" action="/" enctype="multipart/form-data">
-                <input id=submit-btn type="submit" value="Reload">
-            </form> -->
             {% endif %}
         </div>
     </div>
-
-    <!-- {% if compressed %}
-        <div>
-            <img src="{{ url_for('display_image', filename=compressed) }}">
-        </div>
-    {% endif %} -->
     <div class="container-text2">
         {% if pixel %}
         <h2>image pixel difference percentage: {{pixel}}%</h2>
