@@ -39,7 +39,7 @@ def upload_image():
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        waktu, compressedFilename, pixel = svd.compress(filename, 100 - variableInt)
+        waktu, compressedFilename, pixel = svd.compress(filename, variableInt)
         flash('Image successfully uploaded and displayed below')
         return render_template('index.html', filename=filename, compressed = compressedFilename, waktu = waktu, pixel = pixel)
     else:

@@ -49,12 +49,12 @@
                         </div> -->
                         {% endif %}
                     </div>
-                    <div class="content">
+                    <!-- <div class="content">
                         <div class="icon">
                             <i class="fas fa-cloud-upload-alt"></i>
                         </div>
                         <div class="text">No file choosen, yet</div>
-                    </div>
+                    </div> -->
                     <div id="cancel-btn"><i class="fas fa-times"></i></div>
                     <div class="filename">file name here</div>
                 </div>
@@ -77,8 +77,8 @@
                     <div class="image">
                         <img src="{{ url_for('display_image', filename=compressed) }}" alt="">
                     </div>
-                    <a href="{{ url_for('download_file', filename=compressed) }}" id="download-btn">DOWNLOAD
-                        HERE</a>
+                    <!-- <a href="{{ url_for('download_file', filename=compressed) }}" id="download-btn">DOWNLOAD
+                        HERE</a> -->
                     <!-- <button onclick="{{url_for}}" id="custom-btn">Download</button> -->
                 </div>
                 <button onclick="downloadBtnActivate()" id="custom-btn">Download</button>
@@ -97,7 +97,7 @@
     {% endif %} -->
     <div class="container-text2">
         {% if pixel %}
-            <h2>image pixel difference percentage: {{100 - pixel}}%</h2>
+            <h2>image pixel difference percentage: {{pixel}}%</h2>
         {% endif %}
         {% if waktu %}
             <h2>image compression time: {{ waktu }} seconds</h2>

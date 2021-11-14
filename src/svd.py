@@ -94,9 +94,11 @@ def compress(filename, persen):
         persen = persen*min(img.shape)//100
     
     pixel = pixelDiff(img, persen)
+    pixel = max(1,pixel)
 
     stop = timeit.default_timer()
     total = round(stop - start)
+    total = max(0, total)
     print('Running Time: ', total//60, 'm', total%60, 's')
     
     newFilename = filename.split(".")[0] +'_compressed.'+filename.split(".")[-1]
