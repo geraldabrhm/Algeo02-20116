@@ -13,7 +13,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', filename = 'no_image.jpg')
 
 def download_image(filename):
     return send_from_directory(app.config["UPLOAD_FOLDER"], filename)
@@ -39,7 +39,7 @@ def upload_image():
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        waktu, compressedFilename, pixel = svd.compress(filename, variableInt)
+        waktu, compressedFilename, pixel = svd.compress(filename, 100 - variableInt)
         flash('Image successfully uploaded and displayed below')
         return render_template('index.html', filename=filename, compressed = compressedFilename, waktu = waktu, pixel = pixel)
     else:

@@ -85,7 +85,7 @@ def compress(filename, persen):
     start = timeit.default_timer()
     pathfile = os.path.join(os.getcwd(), 'static', 'Image', filename)
     img = cv.imread(pathfile,-1)
-    print(("Compressing", filename))
+    print("Compressing", filename)
     after = main(img, persen)
 
     if (min(img.shape[0], img.shape[1]) > 200):
@@ -99,7 +99,7 @@ def compress(filename, persen):
     total = round(stop - start)
     print('Running Time: ', total//60, 'm', total%60, 's')
     
-    newFilename = filename.split(".")[0] +'_'+str(persen)+'.'+filename.split(".")[-1]
+    newFilename = filename.split(".")[0] +'_compressed.'+filename.split(".")[-1]
     newPathfile = os.path.join(os.getcwd(), 'static', 'Image', newFilename)
     cv.imwrite(newPathfile, after)
     return total, newFilename, pixel

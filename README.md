@@ -15,4 +15,5 @@
 
 ## How To Run SVD in backend
 1. cd src
-2. py svd.py
+2. env\Scripts\activate (activate virtual env)
+3. py svd.py
