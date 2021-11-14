@@ -22,9 +22,9 @@ Folder yang terdapat di dalam program:
     ```bash
     cd src
     ```
-3. Aktifkan virtual environtment
+3. Download pip pada requirements.txt
     ```bash
-    env\Scripts\activate
+    pip install -r requirements.txt
     ```
 4. Jalankan file `server.py`
     ```bash
