@@ -18,7 +18,7 @@ Folder yang terdapat di dalam program:
     ```bash
     git clone https://github.com/geraldabrhm/Algeo02-20116.git
     ```
-2. Masuk ke dalam folder `src`
+2. Masuk ke dalam terminal menggunakan _virtual environment_ dan pastikan _current directory_  `../src` ([Langkah pengaktifan _virtual env_](https://code.visualstudio.com/docs/python/environments))
     ```bash
     cd src
     ```
