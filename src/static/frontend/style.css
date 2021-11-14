@@ -24,7 +24,7 @@
 .container-text {
 	padding: 0 3vh;
 	background-color: #fbf3e4;
-	height: 17vh;
+	height: 18vh;
 	color: #b91646;
 }
 .container-text h1 {
@@ -53,12 +53,12 @@
 	padding-left: 10px;
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    margin: 0; 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	margin: 0;
 }
 
 .container-text2 {
@@ -67,18 +67,21 @@ input[type=number]::-webkit-outer-spin-button {
 	background-color: #fbf3e4;
 	color: #b91646;
 }
-.container-text2 h2{
+.container-text2 h2 {
 	font-size: 1.5em;
 }
 
 .footer {
 	display: flex;
 	justify-content: center;
-	padding: 10px 0px;
+	padding: 0px 0px;
 	background-color: #fbf3e4;
 	color: #b91646;
 }
-
+.footer #love {
+	margin-left: 6px;
+	margin-right: 6px;
+}
 /*//////////////////////////////IMAGE COMPRESSION //////////////////////////////////*/
 .image-compression {
 	display: flex;
@@ -241,7 +244,7 @@ input[type=number]::-webkit-outer-spin-button {
 .container-input #custom-btn {
 	margin-top: 30px;
 	width: 100%;
-	max-width: 500px;
+	max-width: 330px;
 	height: 50px;
 	display: block;
 	border: none;
@@ -254,7 +257,7 @@ input[type=number]::-webkit-outer-spin-button {
 		#b91646 73.34%
 	);
 	color: white;
-	padding: 8px 0;
+	/* padding: 8px 0; */
 	font-weight: 500;
 	text-transform: uppercase;
 	cursor: pointer;
